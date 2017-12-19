@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: IAS3
+Resources:
+  HelloWorldFunction:
+    Properties:
+      CodeUri: s3://ias-live-demo/b617aab1f615863da239c885a0f9bb5d
+      Events:
+        GetResource:
+          Properties:
+            Method: get
+            Path: /
+          Type: Api
+      Handler: index.handler
+      Runtime: nodejs6.10
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31

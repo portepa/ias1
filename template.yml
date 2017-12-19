@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: IAS3
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function # lambda function, w/ s3 storage
+    Properties:
+      Handler: index.handler # file.exported_name
+      Runtime: nodejs6.10
+      Events: # when to execute this function?
+        GetResource:
+          Type: Api # with an HTTP trigger -> AWS API Gateway
+          Properties:
+            Path: /
+            Method: get # get method
